@@ -14,10 +14,14 @@ def total_cost(list):
     cost = total * 0.15
     return cost
 
-monthly_consumption = [320, 300, 280, 350, 420]
+def main():
+    monthly_consumption = [320, 300, 280, 350, 420]
 
-print("Electricity Consumption Report")
-print("------------------------------")
-print(f"Total consumption: {total_consumption(monthly_consumption)} kWh")
-print(f"Average consumption: {average_consumption(monthly_consumption)} kWh")
-print(f"Total cost: {total_cost(monthly_consumption)} EUR")
+    print("Electricity Consumption Report")
+    print("------------------------------")
+    print(f"Total consumption: {total_consumption(monthly_consumption)} kWh")
+    print(f"Average consumption: {average_consumption(monthly_consumption)} kWh")
+    print(f"Total cost: {total_cost(monthly_consumption)} EUR")
+
+if __name__ == "__main__":
+    main()
