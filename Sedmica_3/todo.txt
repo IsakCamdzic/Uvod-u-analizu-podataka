@@ -1,0 +1,5 @@
+0;1;Pripremiti prezentaciju za faks
+1;2;Kupiti namirnice
+0;3;Oprati auto
+1;1;Poslati email profesoru
+0;2;Pročitati poglavlje 3
