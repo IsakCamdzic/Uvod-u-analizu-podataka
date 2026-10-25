@@ -11,8 +11,8 @@ bodovi = [78, 92, 65, 88, 92]
 # a) Pomoću zip() napravi listu parova (ime, bodovi) i ispiši
 #    svaki par u obliku:   Amra: 78
 parovi = list(zip(studenti, bodovi))
-for studenti, bodovi in parovi:
-    print(f"{studenti}: {bodovi}")
+for student, bodovi in parovi:
+    print(f"{student}: {bodovi}")
 
 
 # b) Sortiraj parove po bodovima OPADAJUĆE i ispiši rang listu
@@ -26,26 +26,28 @@ rang = sorted(parovi, key=lambda x: x[1], reverse=True)
 for mjesto, (ime, b) in enumerate(rang, start=1):
     print(f"{mjesto}: {ime} - {b}")
 
-
-
-
-
-
 # c) List comprehension: lista imena studenata sa 80 ili više bodova.
 #    Očekivano: ['Emir', 'Tarik', 'Ana']
 dobri = [ime for ime, b in parovi if b >= 80]
-print("\n80 ili vise bodova:", dobri)
+print(f"\n80 ili vise bodova: {dobri}\n")
 
 # d) Iz fajla real_birthdays.txt (format DD-MM) napravi pomoću
 #    list comprehension-a listu MJESECI kao brojeve (int),
 #    a zatim ispiši sortirane jedinstvene mjesece.
 #    Očekivano: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 FAJL = os.path.join(os.path.dirname(os.path.abspath(__file__)), "real_birthdays.txt")
-# TODO
-
+with open(FAJL, "r", encoding="utf-8") as f:
+    mjeseci = {int(linija.strip().split("-")[1]) for linija in f if linija.strip()}
+    print(sorted(mjeseci))
 
 # e) random: postavi random.seed(42), pa
 #    - nasumično izaberi studenta koji odgovara (random.choice)
 #    - napravi KOPIJU liste studenti i promiješaj je (random.shuffle)
 #      -> to je redoslijed prezentacija
-# TODO
+random.seed(42)
+izbor = random.choice(studenti)
+print(f"\nOdgovara nasumicni student: {izbor}\n")
+kopija_studenata = studenti.copy()
+
+random.shuffle(kopija_studenata)
+print(f"Izmijesanja kopija liste studenata: {kopija_studenata}")
