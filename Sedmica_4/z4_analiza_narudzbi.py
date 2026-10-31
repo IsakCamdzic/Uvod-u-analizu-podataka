@@ -49,22 +49,55 @@ FAJL = os.path.join(FOLDER, "narudzbe.csv")
 DANI = ["Pon", "Uto", "Sri", "Čet", "Pet", "Sub", "Ned"]   # 0 = ponedjeljak
 
 # a) TODO: učitaj i pogledaj kolone
-
+df = pd.read_csv(FAJL)
+print(df.columns)
+print("Dimenzije: ", df.shape)
 
 # b) TODO: čišćenje
-
+#       - iznos u broj:   pd.to_numeric(..., errors="coerce")
+#       - datum u datum:  pd.to_datetime(..., errors="coerce")
+#       - ispiši koliko je neispravnih iznosa (6) i datuma (4)
+#       - izbaci te redove: dropna(subset=[...])  -> očekivano: (590, 6)
+df["iznos"] = pd.to_numeric(df["iznos"], errors="coerce")
+df["datum_vrijeme"] = pd.to_datetime(df["datum_vrijeme"], errors="coerce")
+print(df.isnull().sum())
+df = df.dropna(subset=["iznos", "datum_vrijeme"]).copy()
+print("Nakon ciscenja: ", df.shape)
 
 # c) TODO: izvedene kolone sat, dan, mjesec
-
+df["sat"] = df["datum_vrijeme"].dt.hour
+df["mjesec"] = df["datum_vrijeme"].dt.month
+df["dan"] = df["datum_vrijeme"].dt.day_of_week
 
 # d) TODO: top 5 gradova + grafikon
-
+po_gradu = df["grad"].value_counts().sort_index()
+print("\nNarudzbe po gradu:")
+print(po_gradu)
+po_gradu.plot(kind="bar", color="red")
+plt.xlabel("Grad")
+plt.ylabel("Narudzbe po gradu")
+plt.savefig("z4_grafikon.png")
+print("\nNarudzbe po gradu:")
 
 # e) TODO: narudžbe po satu + grafikon
-
+po_satu = df["sat"].value_counts().sort_index()
+plt.title("Narudžbe po satu u danu")
+plt.xlabel("Sat")
+plt.ylabel("Broj narudžbi")
+plt.xticks(rotation=0)
+plt.grid(axis="y", alpha=0.3)
+plt.savefig("z4_grafikon2.png")
 
 # f) TODO: prosječan iznos po kategoriji
+po_kategoriji = (
+    df.groupby("kategorija")["iznos"]
+    .mean()
+    .sort_values(ascending=False)
+    .round(2)
+)
 
+print("\nProsječan iznos po kategoriji:")
+print(po_kategoriji)
 
 # BONUS: TODO
 
