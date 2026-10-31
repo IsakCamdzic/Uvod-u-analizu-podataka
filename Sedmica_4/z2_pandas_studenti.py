@@ -30,6 +30,8 @@
 import os
 import pandas as pd
 
+from Sedmica_4.p2_pandas_osnove import slabo_prisustvo
+
 pd.set_option("display.max_columns", None)
 pd.set_option("display.width", 120)
 
@@ -37,22 +39,33 @@ FOLDER = os.path.dirname(os.path.abspath(__file__))
 FAJL = os.path.join(FOLDER, "studenti.csv")
 
 # a) TODO: učitaj podatke i ispiši shape i head()
-
+df = pd.read_csv(FAJL)
+print("Dimenzija tabele: ", df.shape)
+print("\nPrvih 5 redova:\n", df.head())
 
 # b) TODO: kolona prosjek
-
+df["prosjek"] = (df["matematika"] + df["programiranje"] + df["statistika"]) / 3
+print("\nNova kolona prosjek:\n")
+print(df[["ime", "prosjek"]].head(3).round(2))
 
 # c) TODO: top 5
-
+print("\nTop 5 studenata po prosjeku:")
+top5 = df.sort_values("prosjek", ascending=False, kind="stable").head(5)
+print(top5[["ime","smjer", "prosjek"]].round(2))
 
 # d) TODO: value_counts
+print("\nBroj studenata po smjeru:")
+print(df["smjer"].value_counts())
 
 
 # e) TODO: groupby
-
+print("\nProsjek po smjeru:")
+print(df.groupby("smjer")["prosjek"].mean().round(2).sort_values(ascending=False))
 
 # f) TODO: filtriranje prisustva
-
+prisustvo = df[df["prisustvo"] < 70]
+print("\nProsjek po prisustvo:")
+print(slabo_prisustvo[["ime", "prisustvo"]])
 
 # BONUS: TODO
 
