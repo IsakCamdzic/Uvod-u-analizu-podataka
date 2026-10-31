@@ -15,6 +15,7 @@ MJESECI = ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun",
            "Jul", "Avg", "Sep", "Okt", "Nov", "Dec"]
 
 # a) Učitaj datume i prebroj koliko ih je u svakom mjesecu.
+<<<<<<< HEAD
 #    Mjesec je dio iza crtice: "15-06" -> 6
 #    Savjet: Counter(...) ili rječnik
 datumi = []
@@ -46,16 +47,33 @@ boje[najveci] = "#e74c4c"
 
 for x, y in zip(MJESECI, broj_po_mjesecima):
     plt.text(x, y + 0.1, str(y), ha="center")
+=======
+with open(FAJL, "r", encoding="utf-8") as f:
+
+
+
+# b) Napravi listu broj_po_mjesecima sa 12 brojeva, redom od januara
+#    do decembra. Očekivano: [5, 2, 3, 3, 2, 2, 5, 6, 3, 3, 2, 2]
+broj_po_mjesecima = []
+# TODO
+
+print("Broj rođendana po mjesecima:", broj_po_mjesecima)
+
+>>>>>>> 9bfaf82 (Vjezbe 4 z1 uradjen)
 # c) Nacrtaj bar chart:
 #    plt.bar(MJESECI, broj_po_mjesecima)
 #    naslov: "Rođendani po mjesecima (38 studenata)"
 #    oznaka y ose: "Broj rođendana"
 #    pa plt.show()
+<<<<<<< HEAD
 plt.bar(MJESECI, broj_po_mjesecima, color=boje)
 plt.title("Rodjendani po mjesecima (38 studenata)")
 plt.ylabel("Broj rodjendana")
 plt.savefig("z5_grafikon.png")
 plt.show()
+=======
+# TODO
+>>>>>>> 9bfaf82 (Vjezbe 4 z1 uradjen)
 
 
 # d) BONUS:
@@ -63,5 +81,9 @@ plt.show()
 #      (savjet: lista boja, npr. ["#3A7CA5", ..., "#F2A541", ...] i color=boje)
 #    - iznad svakog stupca ispiši broj (plt.text(x, y, tekst, ha="center"))
 #    - sačuvaj sliku: plt.savefig("z5_grafikon.png") PRIJE plt.show()
+<<<<<<< HEAD
 
 
+=======
+# TODO
+>>>>>>> 9bfaf82 (Vjezbe 4 z1 uradjen)

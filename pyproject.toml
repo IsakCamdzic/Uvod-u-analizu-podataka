@@ -4,5 +4,9 @@ version = "0.1.0"
 requires-python = ">=3.14"
 dependencies = [
     "ipykernel>=7.4.0",
+<<<<<<< HEAD
     "pyqt5>=5.15.11",
+=======
+    "matplotlib>=3.11.2",
+>>>>>>> 9bfaf82 (Vjezbe 4 z1 uradjen)
 ]
